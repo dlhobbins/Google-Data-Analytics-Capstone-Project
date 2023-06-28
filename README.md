@@ -166,7 +166,20 @@ monthly_totals %>%
 -- Looking for correlation between steps taken and calories burned --  
 ![](images/image4.png)
 
--- Extract weekday from the daily_activities_cleaned table to see which days users are more active--  
+-- Sleep vs activity levels --
+SELECT  
+  user_id, ROUND(SUM(sedentary_minutes/60),2) AS sedentary_hours, ROUND(SUM(lightly_active_minutes/60),2) AS lightly_active_hours,   ROUND(SUM(fairly_active_minutes/60),2) AS fairly_active_hours, ROUND(SUM(very_active_minutes/60),2) AS very_active_hours,   ROUND(SUM(minutes_asleep/60),2) AS hours_asleep, ROUND(SUM(time_in_bed/60),2) AS hours_in_bed  
+FROM  
+  `portfolioproject388206.Bellabeat.daily_activity_cleaned`  
+GROUP BY  
+  user_id  
+ORDER BY  
+  1  
+
+![](images/image8.png)
+Low correlation between sleep and activity level.
+
+-- Extract weekday from the daily_activities_cleaned table to see which days users are more active --  
 SELECT  
   user_id, date, EXTRACT(DAYOFWEEK FROM date) AS weekday, FORMAT_DATE('%A', date) as dayofweek_fullname, AVG(total_steps) AS   average_steps, AVG(total_distance) AS average_distance, AVG(calories) AS average_calories,  
 FROM  
@@ -175,6 +188,21 @@ GROUP BY
   user_id, date  
 ORDER BY  
   1,2  
+
+## Share phase
+
+I created a number of worksheets and a dashboard in Tableau for a quick overview of the visualisations. I then created a slide deck using Google Slides. I used a simple theme and tried to keep the visuals and text balanced.
+
+![](tableau/
+
+### They can be accessed from the following links:
+
+Tableau: https://public.tableau.com/views/BellabeatCaseStudyDashboard_16875061470740/Dashboard?:language=en-US&:display_count=n&:origin=viz_share_link
+
+Slide deck:
+
+
+
 
 
 
