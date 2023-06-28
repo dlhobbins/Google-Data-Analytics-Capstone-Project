@@ -22,9 +22,9 @@ A junior data analyst working for Bellabeat has been tasked with analysing smart
 These insights will then be applied to one of Bellabeats products in order to see how these insights could be applied to Bellabeat customers and drive future marketing strategies. Urška Sršen, the cofounder and Chief Creative Officer of Bellabeat, believes that these insights could unlock potential future growth for the company.
 
 ### The stakeholders include: 
-1.Urška Sršen: Bellabeat’s co founder and Chief Creative Officer
-2.Sando Mur: Mathematician and Bellabeat co founder; key member of the Bellabeat executive team
-3.Bellabeat marketing analytics team: A team of data analysts who are responsible for collecting, analysing, and reporting data that helps guide Bellabeat’s marketing strategy.
+1.Urška Sršen: Bellabeat’s co founder and Chief Creative Officer.  
+2.Sando Mur: Mathematician and Bellabeat co founder; key member of the Bellabeat executive team.  
+3.Bellabeat marketing analytics team: A team of data analysts who are responsible for collecting, analysing, and reporting data that helps guide Bellabeat’s marketing strategy.  
 
 ## Prepare phase
 ### ROCCC
