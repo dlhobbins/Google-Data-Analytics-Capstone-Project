@@ -3,7 +3,6 @@
 This project was completed as part of the final course of the Google Data Analytics professional certificate on Coursera.
 
 
-
 *Tools used were Google Sheets, Big Query, RStudio and Tableau*
 
 ## Introduction
@@ -46,7 +45,7 @@ Started by exploring the various files in Google Sheets. All the csv files have 
 Renamed all columns to snake case for ease in Bigq Query.
 
 ### Big Query
---Explore the data--  
+-- Explore the data --    
 SELECT  
   *  
 FROM  
@@ -55,7 +54,7 @@ ORDER BY
   1,2  
 This query selects all columns from the daily_activity_merged file, it then orders them first by user and then by date. We now have a data frame that is cleanly organised. This was then exported as a new csv file named daily_activity_cleaned. This table contains 940 rows.
 
--- Merging the sleep data to the daily_activity_cleaned--  
+-- Merging the sleep data to the daily_activity_cleaned --    
 SELECT    
 da.*, sd.minutes_asleep,sd.time_in_bed  
 FROM  
@@ -64,13 +63,100 @@ JOIN
   `portfolioproject388206.Bellabeat.sleep_data` AS sd  
 ON da.user_id = sd.user_id  
 
--- Checking how many users logged sleep--  
+-- Checking how many users logged sleep --    
 SELECT  
   DISTINCT id,  
 FROM  
   `portfolioproject388206.Bellabeat.sleep_data`  
 WHERE  
   id is not null  
+
+In addition to joining the sleep_table to the daily_activity_merged csv, I also ran a query to see how many users had sleep data, the result was 24 out of the 33 users had monitored sleep.
+
+-- Exploring the weight log csv --  
+SELECT  
+  DISTINCT user_id  
+FROM  
+  `portfolioproject388206.Bellabeat.weight_log`  
+The result showed only 8 of 33 users had used the weight feature.
+
+-- Exploring the heart rate seconds merged file --  
+The table was too large for Excel or Google Sheets to open fully and due to a timestamp issue, could not be opened in Big Query. I therefore loaded the data in RStudio.
+
+install.packages("tidyverse")  
+library(tidyverse)  
+library(readr)  
+head(heartrate_seconds_merged)  
+     Id Time                 Value  
+       <dbl> <chr>                <dbl>  
+1 2022484408 4/12/2016 7:21:00 AM    97  
+2 2022484408 4/12/2016 7:21:05 AM   102  
+3 2022484408 4/12/2016 7:21:10 AM   105  
+4 2022484408 4/12/2016 7:21:20 AM   103  
+5 2022484408 4/12/2016 7:21:25 AM   101  
+6 2022484408 4/12/2016 7:22:05 AM    95  
+
+
+heartrate_seconds_merged %>%   
+  select(Value) %>%   
+  summary()  
+Value         
+ Min.   : 36.00    
+ 1st Qu.: 63.00    
+ Median : 73.00    
+ Mean   : 77.33    
+ 3rd Qu.: 88.00    
+ Max.   :203.00   
+n_distinct(heartrate_seconds_merged$Id)  
+[1] 14  
+
+At a glance we can see that the dataset contains 3 columns, Id, Time and Value. The rows of the time column represent 5 second intervals. The average recorded heart rate across all users is 77.33, while the minimum is 36.00 and the maximum is 203.00. Additionally we can see that we only have heart rate data for 14 out of the 33 users or 42.42%.
+
+## Analysis phase
+As the weight and heart rate columns contain insufficient data for finding useful insights, this analysis will focus on the activity data such as distance, steps, intensities and calories in order to gain insights into user trends.
+
+### daily_activity_cleaned  
+-- How many users are tracking activity? --  
+SELECT  
+  user_id, logged_activities_distance  
+FROM  
+  `portfolioproject388206.Bellabeat.daily_activity_cleaned`  
+WHERE  
+  logged_activities_distance > 0  
+ORDER BY  
+  1  
+The result showed only 4 users recorded logged activities
+
+-- Aggregate the data to show user activity for the 30 day period --  
+SELECT  
+  user_id, ROUND(SUM(total_distance),2) AS monthly_distance, SUM(total_steps) AS monthly_steps, SUM(logged_activities_distance) AS  
+ monthly_logged_activities, ROUND(SUM(very_active_distance),2) AS monthly_very_active_distance, ROUND(SUM(moderately_active_distance),2) 
+  AS monthly_moderately_active_distance, ROUND(SUM(light_active_distance),2) AS monthly_light_active_distance,  
+ ROUND(SUM(sedentary_active_distance),2) AS monthly_sedentary_active_distance, SUM(calories) AS monthly_calories  
+FROM  
+  `portfolioproject388206.Bellabeat.daily_activity_cleaned`  
+GROUP BY  
+  user_id  
+ORDER BY  
+  1  
+
+This table was then extracted as monthly_totals and imported to RStudio for analysis. RStudio will allow for a quick analysis of all columns and create a variety of charts relevant to the analysis. 
+-- The following code produced a scatterplot which shows the correlation between calories burned and monthly activity distances --  
+library(ggplot2)
+library(readr)
+monthly_totals <- read_csv("monthly_totals.csv")
+View(monthly_totals)
+head(monthly_totals)
+ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calories))+geom_point()
+
+
+
+
+
+
+
+
+
 
 
 
