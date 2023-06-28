@@ -39,5 +39,39 @@ Thirty eligible Fitbit users consented to the submission of personal tracker dat
 
 The folder contains 18 CSV files relating to users activity
 
+## Process phase
+### The data at a glance
+
+Started by exploring the various files in Google Sheets. All the csv files have the Id column which will enable easy joing in Big Query.
+Renamed all columns to snake case for ease in Bigq Query.
+
+### Big Query
+--Explore the data--
+SELECT
+  *
+FROM
+  `portfolioproject388206.Bellabeat.daily_activity_merged`
+ORDER BY
+  1,2
+This query selects all columns from the daily_activity_merged file, it then orders them first by user and then by date. We now have a data frame that is cleanly organised. This was then exported as a new csv file named daily_activity_cleaned. This table contains 940 rows.
+
+-- Merging the sleep data to the daily_activity_cleaned--
+SELECT  
+da.*, sd.minutes_asleep,sd.time_in_bed
+FROM
+  `portfolioproject388206.Bellabeat.daily_activity_cleaned` AS da
+JOIN
+  `portfolioproject388206.Bellabeat.sleep_data` AS sd
+ON da.user_id = sd.user_id
+
+-- Checking how many users logged sleep--
+SELECT
+  DISTINCT id,
+FROM
+  `portfolioproject388206.Bellabeat.sleep_data`
+WHERE
+  id is not null
+
+
 
 
