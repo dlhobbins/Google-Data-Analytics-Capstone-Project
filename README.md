@@ -150,7 +150,7 @@ View(monthly_totals)
 head(monthly_totals)    
 ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calories))+geom_point()  
 
-![] 
+![] (images/image1.png)
 
 
 
