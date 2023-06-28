@@ -1,5 +1,3 @@
-# Google_Data_Analytics_Capstone_Project
-
 # Bellabeat Case Study: How Can a Wellness Technology Company Play It Smart?
 
 This project was completed as part of the final course of the Google Data Analytics professional certificate on Coursera.
