@@ -143,12 +143,16 @@ ORDER BY
 
 This table was then extracted as monthly_totals and imported to RStudio for analysis. RStudio will allow for a quick analysis of all columns and create a variety of charts relevant to the analysis. 
 -- The following code produced a scatterplot which shows the correlation between calories burned and monthly activity distances --    
-library(ggplot2)  
-library(readr)  
-monthly_totals <- read_csv("monthly_totals.csv")  
-View(monthly_totals)  
-head(monthly_totals)  
+library(ggplot2)    
+library(readr)    
+monthly_totals <- read_csv("monthly_totals.csv")    
+View(monthly_totals)    
+head(monthly_totals)    
 ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calories))+geom_point()  
+
+![] 
+
+
 
 
 
