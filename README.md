@@ -152,6 +152,34 @@ ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calorie
 
 ![](images/image1.png)
 
+Then I ran the following code to get a summary of all of the columns.  
+monthly_totals %>%   
+  select(monthly_steps,monthly_very_active_distance,  
+ monthly_light_active_distance,monthly_moderately_active_distance,monthly_sedentary_active_distance,monthly_distance,monthly_calories)   %>%   
+  summary()  
+
+![](images/image3.png)
+
+-- Looking at calories burned vs intensity levels which shows mostly light activity --  
+![](images/image2.png)
+
+-- Looking for correlation between steps taken and calories burned --  
+![](images/image4.png)
+
+-- Extract weekday from the daily_activities_cleaned table to see which days users are more active--  
+SELECT  
+  user_id, date, EXTRACT(DAYOFWEEK FROM date) AS weekday, FORMAT_DATE('%A', date) as dayofweek_fullname, AVG(total_steps) AS   average_steps, AVG(total_distance) AS average_distance, AVG(calories) AS average_calories,  
+FROM  
+  `portfolioproject388206.Bellabeat.daily_activity_cleaned`  
+GROUP BY  
+  user_id, date  
+ORDER BY  
+  1,2  
+
+
+
+
+
 
 
 
