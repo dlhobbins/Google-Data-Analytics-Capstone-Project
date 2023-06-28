@@ -193,13 +193,18 @@ ORDER BY
 
 I created a number of worksheets and a dashboard in Tableau for a quick overview of the visualisations. I then created a slide deck using Google Slides. I used a simple theme and tried to keep the visuals and text balanced.
 
-![](tableau/
+![](tableau/screenshot(35).png)
 
 ### They can be accessed from the following links:
 
 Tableau: https://public.tableau.com/views/BellabeatCaseStudyDashboard_16875061470740/Dashboard?:language=en-US&:display_count=n&:origin=viz_share_link
 
-Slide deck:
+Slide deck: https://docs.google.com/presentation/d/14wyQjVgeffDGmzBEekFy7TR8Bl-WrHwxZeV8p9mv-BM/edit?usp=sharing
+
+## Act phase
+
+In the slide deck I share with stakeholders the insights gained from my analysis, as well as the limitations of the data set and how they can expand upon the insights already gained by viewing a more recent and much longer time frame dataset.
+
 
 
 
