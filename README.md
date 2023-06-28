@@ -41,8 +41,8 @@ The folder contains 18 CSV files relating to users activity
 ## Process phase
 ### The data at a glance
 
-Started by exploring the various files in Google Sheets. All the csv files have the Id column which will enable easy joing in Big Query.
-Renamed all columns to snake case for ease in Bigq Query.
+Started by exploring the various files in Google Sheets. All the csv files have the Id column which will enable easy joining in Big Query.
+Renamed all columns to snake case for ease in Big Query.
 
 ### Big Query
 -- Explore the data --    
@@ -52,6 +52,7 @@ FROM
   `portfolioproject388206.Bellabeat.daily_activity_merged`  
 ORDER BY  
   1,2  
+  
 This query selects all columns from the daily_activity_merged file, it then orders them first by user and then by date. We now have a data frame that is cleanly organised. This was then exported as a new csv file named daily_activity_cleaned. This table contains 940 rows.
 
 -- Merging the sleep data to the daily_activity_cleaned --    
@@ -141,13 +142,15 @@ ORDER BY
   1  
 
 This table was then extracted as monthly_totals and imported to RStudio for analysis. RStudio will allow for a quick analysis of all columns and create a variety of charts relevant to the analysis. 
--- The following code produced a scatterplot which shows the correlation between calories burned and monthly activity distances --  
-library(ggplot2)
-library(readr)
-monthly_totals <- read_csv("monthly_totals.csv")
-View(monthly_totals)
-head(monthly_totals)
-ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calories))+geom_point()
+-- The following code produced a scatterplot which shows the correlation between calories burned and monthly activity distances --    
+library(ggplot2)  
+library(readr)  
+monthly_totals <- read_csv("monthly_totals.csv")  
+View(monthly_totals)  
+head(monthly_totals)  
+ggplot(data = monthly_totals, mapping = aes(x=monthly_distance,y=monthly_calories))+geom_point()  
+
+
 
 
 
