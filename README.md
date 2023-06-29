@@ -53,7 +53,7 @@ FROM
 ORDER BY  
   1,2  
   
-This query selects all columns from the daily_activity_merged file, it then orders them first by user and then by date. We now have a data frame that is cleanly organised. This was then exported as a new csv file named daily_activity_cleaned. This table contains 940 rows.
+This query selects all columns from the daily_activity_merged file, it then orders them first by user and then by date. We now have a data frame that is cleanly organised with the date column automatically formatted. This was then exported as a new csv file named daily_activity_cleaned. This table contains 940 rows.
 
 -- Merging the sleep data to the daily_activity_cleaned --    
 SELECT    
@@ -111,7 +111,7 @@ Value
 n_distinct(heartrate_seconds_merged$Id)  
 [1] 14  
 
-At a glance we can see that the dataset contains 3 columns, Id, Time and Value. The rows of the time column represent 5 second intervals. The average recorded heart rate across all users is 77.33, while the minimum is 36.00 and the maximum is 203.00. Additionally we can see that we only have heart rate data for 14 out of the 33 users or 42.42%.
+At a glance we can see that the dataset contains 3 columns, Id, Time and Value. The rows of the time column represent 5 second intervals. The average recorded heart rate across all users is 77.33, while the minimum is 36.00 and the maximum is 203.00. Additionally we can see that we only have heart rate data for 14 out of the 33 users.
 
 ## Analysis phase
 As the weight and heart rate columns contain insufficient data for finding useful insights, this analysis will focus on the activity data such as distance, steps, intensities and calories in order to gain insights into user trends.
