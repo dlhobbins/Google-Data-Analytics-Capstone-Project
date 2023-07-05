@@ -205,6 +205,24 @@ Slide deck: https://docs.google.com/presentation/d/14wyQjVgeffDGmzBEekFy7TR8Bl-W
 
 In the slide deck I share with stakeholders the insights gained from my analysis, as well as the limitations of the data set and how they can expand upon the insights already gained by viewing a more recent and much longer time frame dataset.
 
+## Key insights
+
+- Weight tracking is either not important or over complicated for most users.  
+- Very few users have logged activities with most activity being tracked passively.  
+- Low sleep data suggests overnight charging.  
+- The majority of activity recorded was light activity.  
+- All users spend the majority of their time sedentary.
+
+## Application to Bellabeat products
+
+- Having looked at the data, the most compatible product with this analysis is the Bellabeat Leaf. This is due to the fact that most users are passively tracking activity. As the Leaf has no screen and can be worn in multiple ways, it can be worn to any event or occasion, whereas a fitness watch wouldn't be suitable for some environments. Having no screen, it also will have longer time between charges.
+- As users are mostly passively tracking a smart device with no screen would prolong battery life, allowing more users to track sleep.   
+- Bellabeat could tailor the app to alert users when they have been sedentary for long periods of time, prompting a short walk.  
+- Add prompts to sleep at users determined time, helping users to stick with healthy routines.  
+- Make logging weight easy and send weekly reminders to those who opt in to use the function.  
+
+
+
 
 
 
